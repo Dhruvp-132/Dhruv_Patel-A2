@@ -3,13 +3,13 @@ public class Visitor extends Person {
     private String ticketType;
 
     public Visitor() {
-        super("Unknown", 0, "Unknown");
+        super("Dhruv", 20, "Melbourne@gmail.com");
         this.visitorId = "Unknown";
         this.ticketType = "Unknown";
     }
 
-    public Visitor(String name, int age, String address, String visitorId, String ticketType) {
-        super(name, age, address);
+    public Visitor(String name, int age, String email, String visitorId, String ticketType) {
+        super(name, age, email);
         this.visitorId = visitorId;
         this.ticketType = ticketType;
     }
