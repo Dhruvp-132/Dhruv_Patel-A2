@@ -3,7 +3,7 @@ public class Employee extends Person {
     private String position;
 
     public Employee() {
-        super("Rocky", 24, "Melbourne");
+        super("Rocky", 24, "Melbourne@gmail.com");
         this.employeeId = "1";
         this.position = "Ride Operator";
     }

@@ -1,12 +1,12 @@
 public class Person {
     private String name;
     private int age;
-    private String address;
+    private String email;
 
     public Person() {
         this.name = "Dhruv";
         this.age = 20;
-        this.address = "Melbourne";
+        this.email = "Melbourne@gmail.com";
     }
 
     public Person(String name, int age, String address) {
@@ -33,10 +33,10 @@ public class Person {
     }
 
     public String getAddress() {
-        return address;
+        return email;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.email = address;
     }
 }
