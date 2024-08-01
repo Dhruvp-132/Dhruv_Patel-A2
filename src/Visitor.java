@@ -1,20 +1,17 @@
+// Visitor.java
 public class Visitor extends Person {
     private String visitorId;
     private String ticketType;
 
-    public Visitor() {
-        super("Dhruv", 20, "Melbourne@gmail.com");
-        this.visitorId = "Unknown";
-        this.ticketType = "Unknown";
-    }
+    public Visitor() {}
 
-    public Visitor(String name, int age, String email, String visitorId, String ticketType) {
+    public Visitor(String name, int age, String email, String visitorId, String membershipStatus) {
         super(name, age, email);
         this.visitorId = visitorId;
         this.ticketType = ticketType;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public String getVisitorId() {
         return visitorId;
     }
@@ -27,7 +24,7 @@ public class Visitor extends Person {
         return ticketType;
     }
 
-    public void setTicketType(String ticketType) {
+    public void setMembershipStatus(String ticketType) {
         this.ticketType = ticketType;
     }
 }

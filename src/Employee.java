@@ -1,33 +1,34 @@
+// Employee.java
 public class Employee extends Person {
     private String employeeId;
     private String position;
 
-    public Employee() {
-        super("Rocky", 24, "Melbourne@gmail.com");
-        this.employeeId = "1";
-        this.position = "Ride Operator";
-    }
+    public Employee() {}
 
-    public Employee(String name, int age, String address, String employeeId, String position) {
-        super(name, age, address);
+    public Employee(String name, int age, String email, String employeeId, String jobTitle) {
+        super(name, age, email);
         this.employeeId = employeeId;
         this.position = position;
     }
 
-    // Getters and setters
-    public String getEmployeeId() {
+    // Getters and Setters
+    public String getEmployeeId()
+    {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(String employeeId)
+    {
         this.employeeId = employeeId;
     }
 
-    public String getPosition() {
+    public String getPosition()
+    {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(String position)
+    {
         this.position = position;
     }
 }
