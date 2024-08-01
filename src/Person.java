@@ -4,7 +4,9 @@ public class Person {
     private String address;
 
     public Person() {
-        // Default constructor
+        this.name = "Dhruv";
+        this.age = 20;
+        this.address = "Melbourne";
     }
 
     public Person(String name, int age, String address) {
