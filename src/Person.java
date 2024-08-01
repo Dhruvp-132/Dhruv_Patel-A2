@@ -1,21 +1,18 @@
-public class Person {
+// Person.java
+public abstract class Person {
     private String name;
     private int age;
     private String email;
 
-    public Person() {
-        this.name = "Dhruv";
-        this.age = 20;
-        this.email = "Melbourne@gmail.com";
-    }
+    public Person() {}
 
-    public Person(String name, int age, String address) {
+    public Person(String name, int age, String email) {
         this.name = name;
         this.age = age;
         this.email = email;
     }
 
-    // Getters and setters
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -32,11 +29,11 @@ public class Person {
         this.age = age;
     }
 
-    public String getAddress() {
+    public String getEmail() {
         return email;
     }
 
-    public void setAddress(String address) {
-        this.email = address;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
