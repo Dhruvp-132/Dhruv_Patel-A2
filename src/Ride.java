@@ -1,4 +1,4 @@
-// Ride.java
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -81,8 +81,24 @@ public class Ride implements RideInterface {
     @Override
     public void PrintRideHistory() {
         System.out.println("Ride History:");
-        for (Visitor visitor : rideHistory) {
+        Iterator<Visitor> iterator = rideHistory.iterator();
+        while (iterator.hasNext()) {
+            Visitor visitor = iterator.next();
             System.out.println(visitor.getName());
         }
+    }
+
+    // New methods for Part 4A
+    public void AddVisitorToRideHistory(Visitor visitor) {
+        rideHistory.add(visitor);
+        System.out.println(visitor.getName() + " added to ride history.");
+    }
+
+    public boolean CheckVisitorInRideHistory(Visitor visitor) {
+        return rideHistory.contains(visitor);
+    }
+
+    public int GetNumberOfVisitorsInRideHistory() {
+        return rideHistory.size();
     }
 }
