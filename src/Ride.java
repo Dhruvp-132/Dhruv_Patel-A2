@@ -54,13 +54,14 @@ public class Ride implements RideInterface {
     @Override
     public void RemoveVisitorFromQueue(Visitor visitor) {
         waitingLine.remove(visitor);
+        System.out.println(visitor.getName() + " removed from the queue.");
     }
 
     @Override
     public void PrintQueue() {
         System.out.println("Current Queue:");
         for (Visitor visitor : waitingLine) {
-            System.out.println(visitor.getName());
+            System.out.println(visitor.getName() + " added to the queue.");;
         }
     }
 
