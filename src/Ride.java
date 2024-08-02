@@ -1,68 +1,96 @@
-public class Ride {
+// Ride.java
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Comparator;
+import java.util.Collections;
+
+public class Ride implements Queue, Collection, Sorting<Visitor> {
     private String rideName;
-    private int capacity;
-    private boolean isOpen;
-    private Employee operator;
+    private int maxRiders;
+    private Employee rideOperator;
+    private Queue<Visitor> waitingLine = new LinkedList<>();
+    private LinkedList<Visitor> rideHistory = new LinkedList<>();
 
-    public Ride() {
-        this.rideName = "Roller-Coaster";
-        this.capacity = 0;
-        this.isOpen = false;
-        this.operator = null;
-    }
+    public Ride() {}
 
-    public Ride(String rideName, int capacity, boolean isOpen, Employee operator) {
+    public Ride(String rideName, int maxRiders) {
         this.rideName = rideName;
-        this.capacity = capacity;
-        this.isOpen = isOpen;
-        this.operator = operator;
+        this.maxRiders = maxRiders;
     }
 
-    // Getters and setters
-    public String getRideName()
-    {
-
+    // Getters and Setters
+    public String getRideName() {
         return rideName;
     }
 
-    public void setRideName(String rideName)
-    {
+    public void setRideName(String rideName) {
         this.rideName = rideName;
     }
 
-    public int getCapacity()
-    {
-        return capacity;
+    public int getMaxRiders() {
+        return maxRiders;
     }
 
-    public void setCapacity(int capacity)
-    {
-        this.capacity = capacity;
+    public void setMaxRiders(int maxRiders) {
+        this.maxRiders = maxRiders;
     }
 
-    public boolean isOpen()
-    {
-        return isOpen;
+    public Employee getRideOperator() {
+        return rideOperator;
     }
 
-    public void setOpen(boolean isOpen)
-    {
-        this.isOpen = isOpen;
+    public void setRideOperator(Employee rideOperator) {
+        this.rideOperator = rideOperator;
     }
 
-    public Employee getOperator()
-    {
-        return operator;
+    public LinkedList<Visitor> getRideHistory() {
+        return rideHistory;
     }
 
-    public void setOperator(Employee operator)
-    {
-        this.operator = operator;
+    // QueueInterface Methods
+    @Override
+    public void AddVisitorToQueue(Visitor visitor) {
+        waitingLine.add(visitor);
     }
 
-    // Method to assign an Employee to operate the ride
-    public void assignOperator(Employee operator) {
-        this.operator = operator;
-        this.isOpen = true; // Assume the ride is open when an operator is assigned
+    @Override
+    public void RemoveVisitorFromQueue(Visitor visitor) {
+        waitingLine.remove(visitor);
+    }
+
+    @Override
+    public void PrintQueue() {
+        System.out.println("Current Queue:");
+        for (Visitor visitor : waitingLine) {
+            System.out.println(visitor.getName());
+        }
+    }
+
+    // CollectionInterface Methods
+    @Override
+    public void RunOneCycle() {
+        System.out.println("Running one cycle of the ride...");
+        int ridersCount = Math.min(maxRiders, waitingLine.size());
+        for (int i = 0; i < ridersCount; i++) {
+            Visitor visitor = waitingLine.poll();
+            if (visitor != null) {
+                rideHistory.add(visitor);
+                System.out.println(visitor.getName() + " enjoyed the ride!");
+            }
+        }
+    }
+
+    @Override
+    public void PrintRideHistory() {
+        System.out.println("Ride History:");
+        for (Visitor visitor : rideHistory) {
+            System.out.println(visitor.getName());
+        }
+    }
+
+    // Sorting Method
+    @Override
+    public void sort(Comparator<Visitor> comparator) {
+        Collections.sort(rideHistory, comparator);
     }
 }
