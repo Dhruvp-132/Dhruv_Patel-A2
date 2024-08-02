@@ -17,6 +17,7 @@ public class AssignmentTwo {
         ride.PrintQueue();
         ride.RemoveVisitorFromQueue(visitor1);
         ride.PrintQueue();
+        System.out.println("------------------------");
     }
 
     public void partFourA() {
@@ -29,6 +30,7 @@ public class AssignmentTwo {
 
         ride.RunOneCycle();
         ride.PrintRideHistory();
+        System.out.println("------------------------");
     }
 
     public void partFourB() {
@@ -43,5 +45,6 @@ public class AssignmentTwo {
 
         ride.RunOneCycle();
         ride.PrintRideHistory();
+        System.out.println("------------------------");
     }
 }

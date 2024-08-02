@@ -1,10 +1,8 @@
 // Ride.java
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Comparator;
-import java.util.Collections;
 
-public class Ride implements Queue, Collection, Sorting<Visitor> {
+public class Ride implements RideInterface {
     private String rideName;
     private int maxRiders;
     private Employee rideOperator;
@@ -47,7 +45,7 @@ public class Ride implements Queue, Collection, Sorting<Visitor> {
         return rideHistory;
     }
 
-    // QueueInterface Methods
+    // RideManagement Methods
     @Override
     public void AddVisitorToQueue(Visitor visitor) {
         waitingLine.add(visitor);
@@ -66,7 +64,6 @@ public class Ride implements Queue, Collection, Sorting<Visitor> {
         }
     }
 
-    // CollectionInterface Methods
     @Override
     public void RunOneCycle() {
         System.out.println("Running one cycle of the ride...");
@@ -86,11 +83,5 @@ public class Ride implements Queue, Collection, Sorting<Visitor> {
         for (Visitor visitor : rideHistory) {
             System.out.println(visitor.getName());
         }
-    }
-
-    // Sorting Method
-    @Override
-    public void sort(Comparator<Visitor> comparator) {
-        Collections.sort(rideHistory, comparator);
     }
 }
