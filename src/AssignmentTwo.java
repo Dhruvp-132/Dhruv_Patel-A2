@@ -8,14 +8,21 @@ public class AssignmentTwo {
 
     public void partThree() {
         Ride ride = new Ride("Roller Coaster", 5);
-        Visitor visitor1 = new Visitor("Alice", 25, "alice@example.com", "V001", "Gold");
-        Visitor visitor2 = new Visitor("Bob", 30, "bob@example.com", "V002", "Silver");
+        Visitor visitor1 = new Visitor("Jack", 25, "jack@example.com", "M001", "Roller Coaster");
+        Visitor visitor2 = new Visitor("Sharon", 30, "sharon@example.com", "M002", "Roller Coaster");
+        Visitor visitor3 = new Visitor("Benny", 28, "benny@example.com", "M003", "Roller Coaster");
+        Visitor visitor4 = new Visitor("Leo", 22, "leo@example.com", "M004", "Roller Coaster");
+        Visitor visitor5 = new Visitor("Tom", 26, "tom@example.com", "M005", "Roller Coaster");
 
         ride.AddVisitorToQueue(visitor1);
         ride.AddVisitorToQueue(visitor2);
+        ride.AddVisitorToQueue(visitor3);
+        ride.AddVisitorToQueue(visitor4);
+        ride.AddVisitorToQueue(visitor5);
 
         ride.PrintQueue();
         ride.RemoveVisitorFromQueue(visitor1);
+        ride.RemoveVisitorFromQueue(visitor2);
         ride.PrintQueue();
         System.out.println("------------------------");
     }

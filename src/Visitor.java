@@ -5,7 +5,7 @@ public class Visitor extends Person {
 
     public Visitor() {}
 
-    public Visitor(String name, int age, String email, String visitorId, String membershipStatus) {
+    public Visitor(String name, int age, String email, String visitorId, String ticketType) {
         super(name, age, email);
         this.visitorId = visitorId;
         this.ticketType = ticketType;
@@ -24,7 +24,7 @@ public class Visitor extends Person {
         return ticketType;
     }
 
-    public void setMembershipStatus(String ticketType) {
+    public void setTicketType(String ticketType) {
         this.ticketType = ticketType;
     }
 }
