@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -9,7 +10,8 @@ public class Ride implements RideInterface {
     private Queue<Visitor> waitingLine = new LinkedList<>();
     private LinkedList<Visitor> rideHistory = new LinkedList<>();
 
-    public Ride() {}
+    public Ride() {
+    }
 
     public Ride(String rideName, int maxRiders) {
         this.rideName = rideName;
@@ -61,7 +63,8 @@ public class Ride implements RideInterface {
     public void PrintQueue() {
         System.out.println("Current Queue:");
         for (Visitor visitor : waitingLine) {
-            System.out.println(visitor.getName() + " added to the queue.");;
+            System.out.println(visitor.getName() + " added to the queue.");
+            ;
         }
     }
 
@@ -81,12 +84,16 @@ public class Ride implements RideInterface {
     @Override
     public void PrintRideHistory() {
         System.out.println("Ride History:");
-        for (Visitor visitor : rideHistory) {
-            System.out.println(visitor.getName());
+        Iterator<Visitor> iterator = rideHistory.iterator();
+        if (iterator.hasNext()) {
+            do {
+                Visitor visitor = iterator.next();
+                System.out.println(visitor.getName());
+            } while (iterator.hasNext());
         }
     }
 
-    // New methods for Part 4A
+    // Part 4A
     public void AddVisitorToRideHistory(Visitor visitor) {
         rideHistory.add(visitor);
         System.out.println(visitor.getName() + " added to ride history.");
@@ -99,4 +106,10 @@ public class Ride implements RideInterface {
     public int GetNumberOfVisitorsInRideHistory() {
         return rideHistory.size();
     }
+
+//Part4B
+    public void SortRideHistory() {
+        Collections.sort(rideHistory, new VisitorComparator());
+        System.out.println("Ride history sorted.");
+}
 }

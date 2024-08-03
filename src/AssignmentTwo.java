@@ -1,3 +1,4 @@
+//Assignment 2
 public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
@@ -49,21 +50,31 @@ public class AssignmentTwo {
             System.out.println("------------------------");
         }
     }
+    // Part 4B
     public void partFourB() {
-            Ride ride = new Ride("Roller Coaster", 3);
-            Visitor visitor1 = new Visitor("Eve", 40, "eve@gmail.com", "V005", "Gold");
-            Visitor visitor2 = new Visitor("Frank", 22, "frank@gmail.com", "V006", "Silver");
-            Visitor visitor3 = new Visitor("Grace", 28, "grace@gmail.com", "V007", "Gold");
+        Ride ride = new Ride("Roller Coaster", 3);
+        Visitor visitor1 = new Visitor("Eve", 40, "eve@gmail.com", "V005", "Gold");
+        Visitor visitor2 = new Visitor("Frank", 22, "frank@gmail.com", "V006", "Silver");
+        Visitor visitor3 = new Visitor("Eve", 40, "grace@gmail.com", "V007", "Gold");
 
-            ride.AddVisitorToQueue(visitor1);
-            ride.AddVisitorToQueue(visitor2);
-            ride.AddVisitorToQueue(visitor3);
+        ride.AddVisitorToQueue(visitor1);
+        ride.AddVisitorToQueue(visitor2);
+        ride.AddVisitorToQueue(visitor3);
 
-            ride.RunOneCycle();
-            ride.PrintRideHistory();
-            System.out.println("------------------------");
-        }
+        ride.RunOneCycle(); // Run the ride cycle to populate the ride history
+
+        System.out.println("Ride history before sorting:");
+        ride.PrintRideHistory();
+
+        // Sort the collection
+        ride.SortRideHistory();
+
+        // Print all Visitors in the collection again to show that the collection has been sorted
+        System.out.println("Ride history after sorting:");
+        ride.PrintRideHistory();
     }
+}
+
 
 
 
