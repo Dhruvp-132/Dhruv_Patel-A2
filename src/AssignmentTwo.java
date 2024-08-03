@@ -5,6 +5,7 @@ public class AssignmentTwo {
         assignment.partThree();
         assignment.partFourA();
         assignment.partFourB();
+        assignment.partFive();
     }
 
     public void partThree() {
@@ -50,13 +51,16 @@ public class AssignmentTwo {
             System.out.println("------------------------");
         }
     }
+
     // Part 4B
+
     public void partFourB() {
         Ride ride = new Ride("Roller Coaster", 3);
         Visitor visitor1 = new Visitor("Eve", 40, "eve@gmail.com", "V005", "Gold");
         Visitor visitor2 = new Visitor("Frank", 22, "frank@gmail.com", "V006", "Silver");
         Visitor visitor3 = new Visitor("Eve", 40, "grace@gmail.com", "V007", "Gold");
-
+        Employee rideOperator = new Employee("John",35, "John@gmail.com","1","Ride Operator");
+        ride.setRideOperator(rideOperator); // Assign the ride operator
         ride.AddVisitorToQueue(visitor1);
         ride.AddVisitorToQueue(visitor2);
         ride.AddVisitorToQueue(visitor3);
@@ -73,7 +77,52 @@ public class AssignmentTwo {
         System.out.println("Ride history after sorting:");
         ride.PrintRideHistory();
     }
+
+// Part5
+    public void partFive() {
+        Ride ride = new Ride("Roller Coaster", 3);
+        Visitor visitor1 = new Visitor("Eve", 40, "eve@gmail.com", "V005", "Gold");
+        Visitor visitor2 = new Visitor("Frank", 22, "frank@gmail.com", "V006", "Silver");
+        Visitor visitor3 = new Visitor("Eve", 40, "grace@gmail.com", "V007", "Gold");
+        Employee rideOperator = new Employee("John",35, "John@gmail.com","1","Ride Operator");
+        ride.setRideOperator(rideOperator); // Assign the ride operator
+
+        ride.AddVisitorToQueue(visitor1);
+        ride.AddVisitorToQueue(visitor2);
+        ride.AddVisitorToQueue(visitor3);
+
+        for (int i = 4; i <= 13; i++) {
+            Visitor visitor = new Visitor("Visitor " + i, 20 + i, "visitor" + i + "@gmail.com", "V00" + i, "Gold");
+            ride.AddVisitorToQueue(visitor);
+        }
+
+        // Print all Visitors in the queue
+        System.out.println("Visitors in the queue:");
+        ride.PrintQueue();
+
+        // Run one cycle
+        ride.RunOneCycle();
+
+        // Print all Visitors in the queue after one cycle is run
+        System.out.println("Visitors in the queue after one cycle:");
+        ride.PrintQueue();
+
+        // Print all Visitors in the collection
+        System.out.println("Visitors in the ride history:");
+        for (Visitor visitor : ride.getRideHistory()) {
+            System.out.println(visitor.getName());
+        }
+
+        // Sort the collection
+        ride.SortRideHistory();
+        System.out.println("Ride history after sorting:");
+        for (Visitor visitor : ride.getRideHistory()) {
+            System.out.println(visitor.getName());
+        }
+        System.out.println("------------------------");
+    }
 }
+
 
 
 

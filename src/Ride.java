@@ -1,3 +1,6 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -9,6 +12,7 @@ public class Ride implements RideInterface {
     private Employee rideOperator;
     private Queue<Visitor> waitingLine = new LinkedList<>();
     private LinkedList<Visitor> rideHistory = new LinkedList<>();
+    private int numOfCycles = 0;
 
     public Ride() {
     }
@@ -70,6 +74,16 @@ public class Ride implements RideInterface {
 
     @Override
     public void RunOneCycle() {
+
+        if (rideOperator == null) {
+            System.out.println("Ride cannot be run. No ride operator assigned.");
+            return;
+        }
+
+        if (waitingLine.isEmpty()) {
+            System.out.println("Ride cannot be run. No visitors in the queue.");
+            return;
+        }
         System.out.println("Running one cycle of the ride...");
         int ridersCount = Math.min(maxRiders, waitingLine.size());
         for (int i = 0; i < ridersCount; i++) {
@@ -78,7 +92,11 @@ public class Ride implements RideInterface {
                 rideHistory.add(visitor);
                 System.out.println(visitor.getName() + " enjoyed the ride!");
             }
+
         }
+        numOfCycles++;
+        System.out.println("Ride cycle completed. Number of cycles: " + numOfCycles);
+
     }
 
     @Override
@@ -107,9 +125,21 @@ public class Ride implements RideInterface {
         return rideHistory.size();
     }
 
-//Part4B
+    //Part4B
     public void SortRideHistory() {
         Collections.sort(rideHistory, new VisitorComparator());
         System.out.println("Ride history sorted.");
-}
+    }
+
+    // Part 6
+    public void writeRideHistoryToFile(String filename) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            for (Visitor visitor : rideHistory) {
+                writer.println(visitor.toString());
+            }
+            System.out.println("Ride history successfully written to " + filename);
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+    }
 }
