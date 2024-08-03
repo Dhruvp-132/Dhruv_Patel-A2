@@ -112,6 +112,7 @@ public class Ride implements RideInterface {
     }
 
     // Part 4A
+
     public void AddVisitorToRideHistory(Visitor visitor) {
         rideHistory.add(visitor);
         System.out.println(visitor.getName() + " added to ride history.");
@@ -126,6 +127,7 @@ public class Ride implements RideInterface {
     }
 
     //Part4B
+
     public void SortRideHistory() {
         Collections.sort(rideHistory, new VisitorComparator());
         System.out.println("Ride history sorted.");
@@ -135,7 +137,7 @@ public class Ride implements RideInterface {
     public void writeRideHistoryToFile(String filename) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Visitor visitor : rideHistory) {
-                writer.println(visitor.toString());
+                writer.println(visitor.getName() + "," + visitor.getAge() + "," + visitor.getEmail() + "," + visitor.getVisitorId() + "," + visitor.getTicketType());
             }
             System.out.println("Ride history successfully written to " + filename);
         } catch (IOException e) {
