@@ -81,9 +81,7 @@ public class Ride implements RideInterface {
     @Override
     public void PrintRideHistory() {
         System.out.println("Ride History:");
-        Iterator<Visitor> iterator = rideHistory.iterator();
-        while (iterator.hasNext()) {
-            Visitor visitor = iterator.next();
+        for (Visitor visitor : rideHistory) {
             System.out.println(visitor.getName());
         }
     }
