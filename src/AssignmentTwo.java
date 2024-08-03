@@ -6,6 +6,7 @@ public class AssignmentTwo {
         assignment.partFourA();
         assignment.partFourB();
         assignment.partFive();
+        assignment.partSix();
     }
 
     public void partThree() {
@@ -120,6 +121,23 @@ public class AssignmentTwo {
             System.out.println(visitor.getName());
         }
         System.out.println("------------------------");
+    }
+    // Part 6
+    public void partSix() {
+        Ride ride = new Ride("Roller Coaster", 5);
+        Visitor visitor1 = new Visitor("Jack", 25, "jack@gmail.com", "M001", "Roller Coaster");
+        Visitor visitor2 = new Visitor("Sharon", 30, "sharon@gmail.com", "M002", "Roller Coaster");
+        Visitor visitor3 = new Visitor("Benny", 28, "benny@gmail.com", "M003", "Roller Coaster");
+        Visitor visitor4 = new Visitor("Leo", 22, "leo@gmail.com", "M004", "Roller Coaster");
+        Visitor visitor5 = new Visitor("Tom", 26, "tom@gmail.com", "M005", "Roller Coaster");
+
+        ride.AddVisitorToRideHistory(visitor1);
+        ride.AddVisitorToRideHistory(visitor2);
+        ride.AddVisitorToRideHistory(visitor3);
+        ride.AddVisitorToRideHistory(visitor4);
+        ride.AddVisitorToRideHistory(visitor5);
+
+        ride.writeRideHistoryToFile("C:\\Users\\shree\\OneDrive - Southern Cross University\\Desktop\\ride_history.txt"); // Write ride history to a file
     }
 }
 
