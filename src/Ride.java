@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -13,6 +15,7 @@ public class Ride implements RideInterface {
     private Queue<Visitor> waitingLine = new LinkedList<>();
     private LinkedList<Visitor> rideHistory = new LinkedList<>();
     private int numOfCycles = 0;
+    private Lock lock = new ReentrantLock(); // Create a ReentrantLock
 
     public Ride() {
     }
@@ -53,15 +56,31 @@ public class Ride implements RideInterface {
 
     // RideManagement Methods
     @Override
+
     public void AddVisitorToQueue(Visitor visitor) {
-        waitingLine.add(visitor);
+        lock.lock(); // Lock before accessing the waitingLine
+        try {
+            waitingLine.add(visitor);
+        } catch (Exception e) {
+            System.err.println("Error adding visitor to queue: " + e.getMessage());
+        } finally {
+            lock.unlock(); // Unlock after accessing the waitingLine
+        }
     }
 
     @Override
     public void RemoveVisitorFromQueue(Visitor visitor) {
-        waitingLine.remove(visitor);
-        System.out.println(visitor.getName() + " removed from the queue.");
+        lock.lock(); // Lock before accessing the waitingLine
+        try {
+            waitingLine.remove(visitor);
+            System.out.println(visitor.getName() + " removed from the queue.");
+        } catch (Exception e) {
+            System.err.println("Error removing visitor from queue: " + e.getMessage());
+        } finally {
+            lock.unlock(); // Unlock after accessing the waitingLine
+        }
     }
+
 
     @Override
     public void PrintQueue() {
