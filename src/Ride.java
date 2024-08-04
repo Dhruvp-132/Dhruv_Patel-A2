@@ -144,4 +144,29 @@ public class Ride implements RideInterface {
             System.err.println("Error writing to file: " + e.getMessage());
         }
     }
+    // Part 7
+    public void readRideHistoryFromFile(String filename) {
+        try (java.util.Scanner scanner = new java.util.Scanner(new java.io.File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(",");
+                if (parts.length == 5) {
+                    String name = parts[0];
+                    int age = Integer.parseInt(parts[1]);
+                    String email = parts[2];
+                    String visitorId = parts[3];
+                    String ticketType = parts[4];
+                    Visitor visitor = new Visitor(name, age, email, visitorId, ticketType);
+                    rideHistory.add(visitor);
+                    System.out.println("Visitor added to ride history: " + visitor.getName());
+                } else {
+                    System.err.println("Error: Invalid file format.");
+                }
+            }
+            System.out.println("Ride history successfully read from " + filename);
+        } catch (java.io.FileNotFoundException e) {
+            System.err.println("Error: File not found.");
+        }
+    }
+
 }
