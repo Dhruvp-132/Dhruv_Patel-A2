@@ -8,6 +8,7 @@ public class AssignmentTwo {
         assignment.partFive();
         assignment.partSix();
         assignment.partSeven();
+        assignment.partEight();
     }
 
     public void partThree() {
@@ -146,6 +147,42 @@ public class AssignmentTwo {
         ride.readRideHistoryFromFile("C:\\Users\\shree\\OneDrive - Southern Cross University\\Desktop\\ride_history.txt"); // Read ride history from file
 
         System.out.println("Number of visitors: " + ride.GetNumberOfVisitorsInRideHistory());
+
+        ride.PrintRideHistory();
+    }
+    // Part 8
+    public void partEight() {
+        Ride ride = new Ride("Roller Coaster", 5);
+        Visitor visitor1 = new Visitor("Jack", 25, "jack@gmail.com", "M001", "Roller Coaster");
+        Visitor visitor2 = new Visitor("Sharon", 30, "sharon@gmail.com", "M002", "Roller Coaster");
+        Visitor visitor3 = new Visitor("Benny", 28, "benny@gmail.com", "M003", "Roller Coaster");
+        Visitor visitor4 = new Visitor("Leo", 22, "leo@gmail.com", "M004", "Roller Coaster");
+        Visitor visitor5 = new Visitor("Tom", 26, "tom@gmail.com", "M005", "Roller Coaster");
+
+        ride.AddVisitorToRideHistory(visitor1);
+        ride.AddVisitorToRideHistory(visitor2);
+        ride.AddVisitorToRideHistory(visitor3);
+        ride.AddVisitorToRideHistory(visitor4);
+        ride.AddVisitorToRideHistory(visitor5);
+
+        // Test thread safety
+        Thread thread1 = new Thread(() -> {
+            ride.AddVisitorToRideHistory(new Visitor("Alice", 25, "alice@gmail.com", "M006", "Roller Coaster"));
+        });
+
+        Thread thread2 = new Thread(() -> {
+            ride.AddVisitorToRideHistory(new Visitor("Bob", 30, "bob@gmail.com", "M007", "Roller Coaster"));
+        });
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
 
         ride.PrintRideHistory();
     }
