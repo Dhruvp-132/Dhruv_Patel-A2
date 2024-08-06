@@ -8,7 +8,6 @@ public class Employee extends Person {
     public Employee(String name, int age, String email, String employeeId, String jobTitle) {
         super(name, age, email);
         this.employeeId = employeeId;
-        this.position = position;
     }
 
     // Getters and Setters

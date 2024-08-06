@@ -4,7 +4,11 @@ public abstract class Person {
     private int age;
     private String email;
 
-    public Person() {}
+    public Person() {
+        this.name = "Default";
+        this.age = 1;
+        this.email = "default@example.com";
+    }
 
     public Person(String name, int age, String email) {
         this.name = name;
