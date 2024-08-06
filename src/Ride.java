@@ -25,7 +25,7 @@ public class Ride implements RideInterface {
         this.maxRiders = maxRiders;
     }
 
-    // Getters and Setters
+    // Getters and Setters Methods
     public String getRideName() {
         return rideName;
     }
