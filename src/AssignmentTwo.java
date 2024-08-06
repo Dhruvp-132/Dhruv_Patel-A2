@@ -26,8 +26,10 @@ public class AssignmentTwo {
         ride.AddVisitorToQueue(visitor5);
 
         ride.PrintQueue();
+        System.out.println("------------------------");
         ride.RemoveVisitorFromQueue(visitor1);
         ride.RemoveVisitorFromQueue(visitor2);
+        System.out.println("------------------------");
         ride.PrintQueue();
         System.out.println("------------------------");
     }

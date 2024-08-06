@@ -3,7 +3,11 @@ public class Visitor extends Person {
     private String visitorId;
     private String ticketType;
 
-    public Visitor() {}
+    public Visitor() {
+        super(); // Calls the default constructor of Person
+        this.visitorId = "DefaultVisitorID";
+        this.ticketType = "Gold";
+    }
 
     public Visitor(String name, int age, String email, String visitorId, String ticketType) {
         super(name, age, email);

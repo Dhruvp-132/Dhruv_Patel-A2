@@ -3,7 +3,11 @@ public class Employee extends Person {
     private String employeeId;
     private String position;
 
-    public Employee() {}
+    public Employee() {
+        super(); // Calls the default constructor of Person
+        this.employeeId = "DefaultID";
+        this.position = "Default Position";
+    }
 
     public Employee(String name, int age, String email, String employeeId, String jobTitle) {
         super(name, age, email);
