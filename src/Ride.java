@@ -56,7 +56,6 @@ public class Ride implements RideInterface {
 
     // RideManagement Methods
     @Override
-
     public void AddVisitorToQueue(Visitor visitor) {
         lock.lock(); // Lock before accessing the waitingLine
         try {

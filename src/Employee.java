@@ -9,9 +9,10 @@ public class Employee extends Person {
         this.position = "Default Position";
     }
 
-    public Employee(String name, int age, String email, String employeeId, String jobTitle) {
+    public Employee(String name, int age, String email, String employeeId, String position) {
         super(name, age, email);
         this.employeeId = employeeId;
+        this.position = position;
     }
 
     // Getters and Setters
